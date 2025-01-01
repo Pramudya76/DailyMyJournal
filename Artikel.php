@@ -233,7 +233,7 @@ if (isset($_POST['hapus'])) {
     <section id="content" class="p-5">
         <div class="container"> 
             <!-- Selamat datang <?= $_SESSION['username'] ?> -->
-             <h1 class="text-center">Artikel</h1>
+             <h1 class="text-center">My Artikel</h1>
              <hr>
              <div class="container">
                 <!-- Button trigger modal -->
