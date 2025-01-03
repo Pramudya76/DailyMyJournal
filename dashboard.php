@@ -120,6 +120,9 @@
                 <a class="nav-link" href="Artikel.php">Article</a>
             </li> 
             <li class="nav-item dropdown">
+            <li class="nav-item">
+                <a class="nav-link" href="user_manajemen.php">Users</a>
+            </li> 
                 <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?= $_SESSION['username']?>
                 </a>
