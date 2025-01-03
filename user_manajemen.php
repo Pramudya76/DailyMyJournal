@@ -93,6 +93,48 @@ if ($result && $result->num_rows > 0) {
     />
 </head>
 <body>
+    <!-- nav begin -->
+    <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top bg-danger-subtle">
+    <div class="container">
+        <a class="navbar-brand" target="_blank" href=".">My Daily Journal</a>
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-dark">
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Artikel.php">Article</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="user_manajemen.php">Users</a>
+            </li> 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?= $_SESSION['username']?>
+                </a>
+                <ul class="dropdown-menu">
+                    <form action="" method="POST">
+                        <button type="submit" name="logout" class="dropdown-item">Logout</button>
+                    </form>
+                </ul>
+            </li> 
+        </ul>
+        </div>
+    </div>
+    </nav>
+    <!-- nav end -->
+
     <!-- content begin -->
     <section id="content" class="p-5">
         <div class="container">
@@ -170,31 +212,33 @@ if ($result && $result->num_rows > 0) {
 
             <!-- Pagination -->
             <div class="pagination mt-3">
-                <ul class="pagination justify-content-center">
-                    <?php if ($page > 1): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?page=<?= $page - 1 ?>" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                    
-                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                        <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                        </li>
-                    <?php endfor; ?>
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <?php if ($page > 1): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<?= $page - 1 ?>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
 
-                    <?php if ($page < $total_pages): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?page=<?= $page + 1 ?>" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
+                        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
+
+                        <?php if ($page < $total_pages): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<?= $page + 1 ?>" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
-        </div> 
+
     </section>
     <!-- content end -->
 
