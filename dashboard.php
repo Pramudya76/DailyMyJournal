@@ -12,6 +12,7 @@
     if ($db->connect_error) {
         die("Koneksi database rusak: " . $db->connect_error);
     }
+    
 
     
     // Query untuk mengambil data
@@ -30,7 +31,7 @@
     if(isset($_POST['logout'])) {
         session_unset();
         session_destroy();
-        header("location: Login.php");
+        header("location: index.php");
     }
     
     $jumlah_article = $result2->num_rows;

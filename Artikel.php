@@ -17,7 +17,7 @@
     if(isset($_POST['logout'])) {
         session_unset();
         session_destroy();
-        header("location: Login.php");
+        header("location: index.php");
     }
     
     // Query untuk mengambil data
