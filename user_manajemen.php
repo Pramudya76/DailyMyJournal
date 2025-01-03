@@ -50,6 +50,12 @@ if (isset($_POST['tambah_user'])) {
     }
 }
 
+if(isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("location: index.php");
+}
+
 // Proses menghapus user
 if (isset($_GET['hapus_id'])) {
     $hapus_id = $_GET['hapus_id'];

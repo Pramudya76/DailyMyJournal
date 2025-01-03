@@ -223,7 +223,7 @@ if (isset($_POST['hapus'])) {
                     <?= $_SESSION['username']?>
                 </a>
                 <ul class="dropdown-menu">
-                    <form action="" method="POST">
+                    <form action="index.php" method="POST">
                         <button type="submit" name="logout" class="dropdown-item">Logout</button>
                     </form>
                 </ul>
