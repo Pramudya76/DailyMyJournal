@@ -1,9 +1,7 @@
 <?php
+include "service/database.php";
 session_start();
-$hostname = "localhost";
-$username = "myuser";
-$password = "Pramudya76";
-$database_name = "buku_tamu";
+
 
 // Membuat koneksi ke database
 $db = new mysqli($hostname, $username, $password, $database_name);

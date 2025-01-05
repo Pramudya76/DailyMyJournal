@@ -1,12 +1,7 @@
 <?php
+    include "service/artikle.php";
     session_start();
-    $hostname = "localhost";
-    $username = "myuser";
-    $password = "Pramudya76";
-    $database_name = "article";
 
-    // Membuat koneksi ke database
-    $db = new mysqli($hostname, $username, $password, $database_name);
 
     if ($db->connect_error) {
         die("Koneksi database rusak: " . $db->connect_error);
