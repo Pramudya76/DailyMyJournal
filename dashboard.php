@@ -129,11 +129,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="user_manajemen.php">Users</a>
             </li> 
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?= $_SESSION['username']?>
                 </a>
                 <ul class="dropdown-menu">
-                    <form action="index.php" method="POST">
+                    <form action="" method="POST">
                         <button type="submit" name="logout" class="dropdown-item">Logout</button>
                     </form>
                 </ul>
@@ -184,7 +185,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div class="p-3">
-                                        <h5 class="card-title"><i class="bi bi-camera"></i> Users</h5> 
+                                        <h5 class="card-title"><i class="bi bi-person"></i> Users</h5> 
                                     </div>
                                     <div class="p-3">
                                         <span class="badge rounded-pill text-bg-danger fs-2"><?php echo $jumlah_user; ?></span>
