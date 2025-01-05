@@ -9,7 +9,7 @@
     }
     
     // Query untuk mengambil data
-    $sql = "SELECT judul, isi, tanggal FROM artikel";
+    $sql = "SELECT judul, isi, tanggal, gambar FROM artikel";
     $result = $conn->query($sql);
 
     // Simpan data untuk ditampilkan nanti
