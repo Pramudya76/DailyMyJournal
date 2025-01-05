@@ -13,8 +13,6 @@
         include "service/artikle.php";
         session_start();
 
-        // Membuat koneksi ke database
-        $db = new mysqli($hostname, $username, $password, $database_name);
 
         $hlm = isset($_POST['hlm']) ? $_POST['hlm'] : 1;
         $limit = 4;
@@ -22,7 +20,7 @@
         $no = $limit_start + 1;
 
         $sql = "SELECT * FROM artikel ORDER BY tanggal DESC LIMIT $limit_start, $limit";
-        $hasil = $db->query($sql);
+        $hasil = $conn->query($sql);
 
         while ($row = $hasil->fetch_assoc()) {
         ?>
@@ -132,7 +130,7 @@
 
 <?php 
 $sql1 = "SELECT * FROM artikel";
-$hasil1 = $db->query($sql1); 
+$hasil1 = $conn->query($sql1); 
 $total_records = $hasil1->num_rows;
 ?>
 <p>Total article : <?php echo $total_records; ?></p>

@@ -3,12 +3,12 @@
     session_start();
 
 
-    if ($db->connect_error) {
+    if ($conn->connect_error) {
         die("Koneksi database rusak: " . $db->connect_error);
     }
 
     $sql = "SELECT judul, isi, gambar FROM artikel WHERE gambar IS NOT NULL AND gambar != ''";
-    $result = $db->query($sql);
+    $result = $conn->query($sql);
 
     if(isset($_POST['logout'])) {
         session_unset();
@@ -33,7 +33,7 @@
         ];
     }
 
-    $db->close();
+    $conn->close();
 ?>
 
 <!DOCTYPE html>

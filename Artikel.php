@@ -1,9 +1,6 @@
 <?php
     include "service/artikle.php";
     session_start();
-    if ($db->connect_error) {
-        die("Koneksi database rusak: " . $db->connect_error);
-    }
 
     if(isset($_POST['logout'])) {
         session_unset();
@@ -13,7 +10,7 @@
     
     // Query untuk mengambil data
     $sql = "SELECT judul, isi, tanggal FROM artikel";
-    $result = $db->query($sql);
+    $result = $conn->query($sql);
 
     // Simpan data untuk ditampilkan nanti
     $artikel = [];
@@ -75,7 +72,7 @@ if (isset($_POST['simpan'])) {
             unlink("gambar/" . $_POST['gambar_lama']);
         }
 
-        $stmt = $db->prepare("UPDATE artikel 
+        $stmt = $conn->prepare("UPDATE artikel 
                                 SET 
                                 judul =?,
                                 isi =?,
@@ -88,7 +85,7 @@ if (isset($_POST['simpan'])) {
         $simpan = $stmt->execute();
     } else {
 		    //insert data
-        $stmt = $db->prepare("INSERT INTO artikel (judul,isi,gambar,tanggal,username)
+        $stmt = $conn->prepare("INSERT INTO artikel (judul,isi,gambar,tanggal,username)
                                 VALUES (?,?,?,?,?)");
 
         $stmt->bind_param("sssss", $judul, $isi, $gambar, $tanggal, $username);
@@ -120,7 +117,7 @@ if (isset($_POST['hapus'])) {
         unlink("gambar/" . $gambar);
     }
 
-    $stmt = $db->prepare("DELETE FROM artikel WHERE id =?");
+    $stmt = $conn->prepare("DELETE FROM artikel WHERE id =?");
 
     $stmt->bind_param("i", $id);
     $hapus = $stmt->execute();
@@ -138,7 +135,7 @@ if (isset($_POST['hapus'])) {
     }
 
     $stmt->close();
-    $db->close();
+    $conn->close();
 }
 
 
@@ -300,7 +297,7 @@ if (isset($_POST['hapus'])) {
     ></script>
 
     <?php
-        $db->close();
+        $conn->close();
 
     ?>
     <script>

@@ -1,13 +1,7 @@
 <?php
     include "service/database.php";
+    include "service/artikle.php";
     session_start();
-    $hostname = "localhost";
-    $username = "myuser";
-    $password = "Pramudya76";
-    $database_name = "article";
-
-    // Membuat koneksi ke database
-    $db = new mysqli($hostname, $username, $password, $database_name);
 
     // Cek koneksi
     if ($db->connect_error) {
@@ -24,11 +18,11 @@
     $users = "SELECT username FROM users";
 
 
-    $result = $db->query($sql);
+    $result = $conn->query($sql);
 
-    $result2 = $db->query($artikel);
-    $result3 = $db->query($gallery);
-    $result4 = $database->query($users);
+    $result2 = $conn->query($artikel);
+    $result3 = $conn->query($gallery);
+    $result4 = $db->query($users);
 
 
     if(isset($_POST['logout'])) {

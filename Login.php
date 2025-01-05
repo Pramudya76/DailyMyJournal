@@ -22,7 +22,7 @@
         // Jika bukan admin, cek di database
         else {
             $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-            $result = $database->query($sql);
+            $result = $db->query($sql);
 
             if($result->num_rows > 0) {
                 $data = $result->fetch_assoc();
@@ -34,7 +34,7 @@
                 $login_message = "Username atau password salah";
             }
         }
-        $database->close();
+        $db->close();
     }
 ?>
 
