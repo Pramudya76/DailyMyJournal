@@ -1,5 +1,6 @@
 <?php
     include "service/artikle.php";
+    include "upload_foto.php";
     session_start();
 
     if(isset($_POST['logout'])) {
