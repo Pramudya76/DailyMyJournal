@@ -21,7 +21,7 @@
                                 $conn = new mysqli($hostname, $username, $password, $database_name);
 
                                 $hlm = (isset($_POST['hlm'])) ? $_POST['hlm'] : 1;
-                                $limit = 3;
+                                $limit = 4;
                                 $limit_start = ($hlm - 1) * $limit;
                                 $no = $limit_start + 1;
 

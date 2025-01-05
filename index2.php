@@ -69,9 +69,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#gallery">Gallery</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="Login.php" role="button">Login</a>
-                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= $_SESSION['username']?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <form action="" method="POST">
+                                <button type="submit" name="logout" class="dropdown-item">Logout</button>
+                            </form>
+                        </ul>
+                    </li> 
                 </ul>
             </div>
         </div>

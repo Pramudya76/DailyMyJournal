@@ -1,4 +1,5 @@
 <?php
+    include "service/database.php";
     session_start();
     $hostname = "localhost";
     $username = "myuser";
@@ -20,12 +21,14 @@
 
     $artikel = "SELECT judul, isi FROM artikel";
     $gallery = "SELECT gambar FROM artikel WHERE gambar IS NOT NULL AND gambar != ''";
+    $users = "SELECT username FROM users";
 
 
     $result = $db->query($sql);
 
     $result2 = $db->query($artikel);
     $result3 = $db->query($gallery);
+    $result4 = $database->query($users);
 
 
     if(isset($_POST['logout'])) {
@@ -36,6 +39,8 @@
     
     $jumlah_article = $result2->num_rows;
     $jumlah_gallery = $result3->num_rows;
+    $jumlah_user = $result4->num_rows;
+
 
     // Simpan data untuk ditampilkan nanti
     $artikel = [];
@@ -169,6 +174,20 @@
                                     </div>
                                     <div class="p-3">
                                         <span class="badge rounded-pill text-bg-danger fs-2"><?php echo $jumlah_gallery; ?></span>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col">
+                        <div class="card border border-danger mb-3 shadow" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div class="p-3">
+                                        <h5 class="card-title"><i class="bi bi-camera"></i> Users</h5> 
+                                    </div>
+                                    <div class="p-3">
+                                        <span class="badge rounded-pill text-bg-danger fs-2"><?php echo $jumlah_user; ?></span>
                                     </div> 
                                 </div>
                             </div>

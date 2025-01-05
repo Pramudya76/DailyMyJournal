@@ -11,29 +11,32 @@
     if(isset($_POST['login'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        //$hash_password = hash("sha256",$password);
 
-        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        // Cek apakah ini admin
+        if($username === "Admin" && $password === "123") {
+            $_SESSION["username"] = $username;
+            $_SESSION["is_login"] = true;
+            header("Location: dashboard.php");
 
-        $result = $db->query($sql);
+        } 
+        // Jika bukan admin, cek di database
+        else {
+            $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $result = $database->query($sql);
 
-        if($result->num_rows > 0) {
-            $data = $result->fetch_assoc();
-            $_SESSION ["username"] = $data["username"];
-            $_SESSION ["is_login"] = true;
-            
-            header("location: dashboard.php");
-
-        }else  {
-            $login_message =  "datanya tidak ada di database";
+            if($result->num_rows > 0) {
+                $data = $result->fetch_assoc();
+                $_SESSION["username"] = $data["username"];
+                $_SESSION["is_login"] = true;
+                header("location: index2.php");
+                exit();
+            } else {
+                $login_message = "Username atau password salah";
+            }
         }
-        $db->close();
-
+        $database->close();
     }
-
-
 ?>
-
 
 
 
